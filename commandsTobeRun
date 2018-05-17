@@ -1,0 +1,9 @@
+
+
+encrypt.bat -g anystring
+
+encrypt.bat -e Welcome#1234567 "C:\Users\ashivaraj\Desktop\cmd\key.txt"
+
+encrypt.bat -v 0d911ec0c3cb817cd4176bd9770a2992 Welcome#1234567 "C:\Users\ashivaraj\Desktop\cmd\key.txt"
+
+process.bat "C:\Users\ashivaraj\Desktop\cmd\bin" accountInsert

@@ -1,0 +1,42 @@
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+    <bean id="accountInsert"
+        class="com.salesforce.dataloader.process.ProcessRunner"
+        singleton="false">
+        <description>accountInsert job gets the account record from the CSV file 
+            and inserts it into Salesforce.</description>
+        <property name="name" value="HRHD_EAL_Approvers__c"/>
+        <property name="configOverrideMap">
+            <map>
+                <entry key="sfdc.debugMessages" value="true"/>
+                <entry key="sfdc.debugMessagesFile" 
+                    value="C:\Users\ashivaraj\Desktop\accountInsertSoapTrace.log"/>
+                <entry key="sfdc.endpoint" value="https://test.salesforce.com"/>
+                <entry key="sfdc.username" value="ashivaraj@deloitte.com.kpprod.ohcmdev"/>
+                <!--Password below has been encrypted using key file, 
+                    therefore, it will not work without the key setting: 
+                    process.encryptionKeyFile.
+                    The password is not a valid encrypted value, 
+                    please generate the real value using the encrypt.bat utility -->
+                <entry key="sfdc.password" value="0d911ec0c3cb817cd4176bd9770a2992 "/>
+                <entry key="process.encryptionKeyFile" 
+                    value="C:\Users\ashivaraj\Desktop\cmd\key.txt"/>
+                <entry key="sfdc.timeoutSecs" value="600"/>
+                <entry key="sfdc.loadBatchSize" value="200"/>
+                <entry key="sfdc.entity" value="HRHD_EAL_Approvers__c"/>
+                <entry key="process.operation" value="insert"/>
+                <entry key="process.mappingFile" 
+                    value="C:\Users\ashivaraj\Desktop\cmd\accountInsertMap.sdl"/>
+                <entry key="dataAccess.name" 
+                    value="C:\Users\ashivaraj\Desktop\cmd\EAL approvers extract.csv"/>
+                <entry key="process.outputSuccess" 
+                    value="C:\Users\ashivaraj\Desktop\cmd\accountInsert_success.csv"/>
+                <entry key="process.outputError" 
+                    value="C:\Users\ashivaraj\Desktop\cmd\accountInsert_error.csv"/>
+                <entry key="dataAccess.type" value="csvRead"/>
+                <entry key="process.initialLastRunDate" 
+                    value="2005-12-01T00:00:00.000-0800"/>
+            </map>
+        </property>
+    </bean>
+</beans>
